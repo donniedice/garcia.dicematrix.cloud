@@ -1,6 +1,18 @@
-/* index.css */
-
+/* ========================= */
 /* Reset and Global Styles */
+/* ========================= */
+:root {
+  --lightAccent: #88b6fc;
+  --black: #1B3E68;
+  --white: #ffffff;
+  --hoverBlue: #14538d;
+  --borderColor: #ccc;
+  --backgroundColor: #f9fafc;
+  --textColor: #1B3E68;
+  --buttonColor: #1d539f;
+  --buttonHoverColor: #14538d;
+}
+
 html {
   box-sizing: border-box;
 }
@@ -17,50 +29,19 @@ body, html {
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   overflow-x: hidden; /* Prevent horizontal overflow */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--backgroundColor);
 }
 
-/* Root App Container */
 #root, .App {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  background-color: #f9fafc; /* Light background for content */
 }
 
-/* Main Content Section */
-main {
-  flex: 1;
-  background-color: #ffffff; /* White background for main content */
-  overflow: hidden; /* Prevent content overflow */
-  padding: 0; /* Reset padding */
-  margin: 0; /* Reset margin */
-}
-
-/* Footer */
 footer {
   text-align: center;
-  background: #1B3E68;
-  color: #fff;
+  background: var(--black);
+  color: var(--white);
   padding: 10px 0;
   font-size: 0.9rem;
-  margin-top: auto;
-}
-
-/* Responsive Design for Smaller Screens */
-@media (max-width: 768px) {
-  main {
-    padding: 10px;
-  }
-
-  footer {
-    font-size: 0.8rem;
-  }
-}
-
-/* Code Block Styling */
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

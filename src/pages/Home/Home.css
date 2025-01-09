@@ -1,32 +1,39 @@
-/* Example background, top spacer, etc. */
+/* ========================= */
+/* Page Container */
+/* ========================= */
 .home-page {
   width: 100%;
   margin: 0 auto;
   padding: 0;
-  background-color: #88b6fc;
+  background-color: var(--lightAccent, #88b6fc);
+  position: relative; /* Ensure proper stacking context */
+  z-index: 1; /* Set a base z-index */
 }
 
+/* ========================= */
+/* Gallery Spacer */
+/* ========================= */
 .gallery-spacer {
   height: 30px;
   width: 100%;
   background-color: #354E2D;
+  margin: 0; /* Ensure no extra margins affect positioning */
+  padding: 0;
+  z-index: 0; /* Lower than header */
 }
 
 /* ========================= */
-/* Slideshow Container */
+/* Slideshow */
 /* ========================= */
 .home-slideshow {
   position: relative;
   width: 100%;
-  /* If you don't want a fixed height, remove or set min-height
-     so images define the container height themselves:
-     min-height: 400px; 
-  */
   overflow: hidden;
-  background: #000; 
+  background: #000;
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index: 1; /* Ensure slideshow appears above spacer */
 }
 
 .slide-container {
@@ -37,9 +44,6 @@
 
 .slide-wrapper {
   display: flex;
-  /* We set `transition` inline in Home.js, but you can keep fallback here:
-     transition: transform 1.2s ease-in-out;
-  */
 }
 
 .slide {
@@ -49,7 +53,6 @@
   justify-content: center;
 }
 
-/* No top/bottom cut => object-fit: contain, height auto */
 .slide-image {
   width: 100%;
   height: auto;
@@ -64,26 +67,28 @@
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background-color: rgba(0,0,0,0.3);
-  color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+  color: var(--white, #fff);
   border: none;
-  font-size: 32px; 
+  font-size: 32px;
   cursor: pointer;
-  z-index: 2;
+  z-index: 2; /* Keep above the slideshow */
   width: 50px;
   height: 50px;
-  line-height: 50px;
   text-align: center;
   transition: background 0.3s ease;
 }
+
 .arrow-left {
   left: 20px;
 }
+
 .arrow-right {
   right: 20px;
 }
+
 .arrow-btn:hover {
-  background-color: rgba(0,0,0,0.6);
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 /* ========================= */
@@ -96,7 +101,6 @@
   transform: translateX(-50%);
   display: flex;
   gap: 8px;
-  z-index: 2;
 }
 
 .dot {
@@ -107,11 +111,9 @@
   cursor: pointer;
   transition: background 0.3s;
 }
-.dot:hover {
-  background-color: #888;
-}
+
 .dot.active {
-  background-color: #fff;
+  background-color: var(--white, #fff);
 }
 
 /* ========================= */
@@ -124,24 +126,17 @@
   padding: 0 20px;
 }
 
-.home-extra-text {
-  margin-top: 30px;
-  line-height: 1.6;
-  font-size: 16px;
-}
-
-/* Example button style if needed */
 .home-learn-more-btn {
-  background-color: #1B3E68;
-  color: #fff;
+  background-color: var(--black, #1B3E68);
+  color: var(--white, #fff);
   padding: 10px 20px;
   font-size: 16px;
   text-decoration: none;
-  border-radius: 0;
   transition: background 0.3s ease;
 }
+
 .home-learn-more-btn:hover {
-  background-color: #14538d;
+  background-color: var(--hoverBlue, #14538d);
 }
 
 /* ========================= */
@@ -152,13 +147,12 @@
     font-size: 24px;
     width: 40px;
     height: 40px;
-    line-height: 40px;
   }
+
   .dot {
     width: 10px;
     height: 10px;
   }
-
 }
 
 @media (max-width: 576px) {
@@ -166,11 +160,10 @@
     font-size: 19px;
     width: 35px;
     height: 35px;
-    line-height: 35px;
   }
+
   .dot {
     width: 8px;
     height: 8px;
   }
-  /* adjust text sizes as you like */
 }
