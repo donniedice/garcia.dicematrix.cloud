@@ -1,70 +1,142 @@
-# Getting Started with Create React App
+## Website Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Overview
 
-## Available Scripts
+This document outlines the structure and best practices for maintaining and expanding the website hosted on `garcia.dicematrix.cloud`. The aim is to provide clear guidance for developers to manage and evolve the project seamlessly.
 
-In the project directory, you can run:
+---
 
-### `npm start`
+### Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **Frontend**: React.js
+- **Backend**: Node.js with Express
+- **Database**: TBD (not yet installed as of the latest update)
+- **Hosting**: Nginx Proxy Manager with subdomain routing
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+### Directory Structure
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+#### Local Development Structure
 
-### `npm run build`
+- ``
+  - ``
+    - ``
+      - `logo-desktop.png`
+      - `logo-mobile.png`
+      - `logo.png`
+      - `slide1.png`
+      - `slide2.png`
+      - `slide3.png`
+      - `slide4.png`
+      - `slide5.png`
+      - `slide6.png`
+      - ``
+        - `facebook-icon.svg`
+        - `favicon.ico`
+        - `instagram-icon.svg`
+        - `youtube-icon.svg`
+  - ``
+    - ``
+      - `Header.css`
+      - `Header.js`
+      - ``
+        - `en.json`
+        - `es.json`
+  - ``
+    - ``
+      - `Home.css`
+      - `Home.js`
+      - ``
+        - `en.json`
+        - `es.json`
+  - `App.css`
+  - `App.js`
+  - `i18n.js`
+  - `index.css`
+  - `index.js`
+  - `reportWebVitals.js`
+  - `setupTests.js`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+#### GitHub Repository Structure
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- The `src` folder from the local development environment is pushed to GitHub.
+- Only the `src` folder is pulled from GitHub for use in production builds.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+#### Production Deployment Structure
 
-### `npm run eject`
+- The `src` folder is pulled to `/frontend/src` on the webserver.
+- The `npm run build` command is executed from the `/frontend` directory to generate the production build.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+---
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Internationalization Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+#### i18n Configuration (`src/i18n.js`)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+The project uses `i18next` with `react-i18next` for internationalization. This allows the app to support multiple languages with ease.
 
-## Learn More
+- **Namespaces**:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  - `home`: For translations related to the Home page.
+  - `header`: For translations related to the Header component.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+- **Languages Supported**:
 
-### Code Splitting
+  - `en` (English)
+  - `es` (Spanish)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+- **Structure**:
 
-### Analyzing the Bundle Size
+  - Translations are stored in `locales` directories within their respective components or pages.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Example Configuration
 
-### Making a Progressive Web App
+```javascript
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+// Import the JSON for Home namespace
+import enHome from './pages/Home/locales/en.json';
+import esHome from './pages/Home/locales/es.json';
 
-### Advanced Configuration
+// Import the JSON for Header namespace
+import enHeader from './components/Header/locales/en.json';
+import esHeader from './components/Header/locales/es.json';
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+i18n
+  .use(initReactI18next)
+  .init({
+    resources: {
+      en: {
+        home: enHome,
+        header: enHeader,
+      },
+      es: {
+        home: esHome,
+        header: esHeader,
+      },
+    },
+    // Our namespaces:
+    ns: ['home', 'header'],
+    // If no namespace is specified in a component, default to 'home'
+    defaultNS: 'home',
 
-### Deployment
+    // Default language / fallback
+    lng: 'en',
+    fallbackLng: 'en',
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+    // Key separator off since we use full string keys
+    keySeparator: false,
+    interpolation: {
+      escapeValue: false, // React already escapes XSS
+    },
+  });
 
-### `npm run build` fails to minify
+export default i18n;
+```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+---
+
+This document serves as a living resource. Update it regularly to reflect the project’s current state.
+
