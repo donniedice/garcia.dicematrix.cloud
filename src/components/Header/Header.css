@@ -1,0 +1,384 @@
+/* Header.css */
+
+/* ========================= */
+/* Header Container */
+/* ========================= */
+
+.header {
+  background-color: var(--lightAccent, #88b6fc);
+  color: var(--black, #1B3E68);
+  height: 390px; /* Fixed height */
+  width: 100%;
+  display: flex;
+  align-items: center; /* Vertically center .header-inner */
+  justify-content: center; /* Horizontally center .header-inner */
+  position: relative; /* For absolute positioning of hamburger */
+  box-sizing: border-box;
+}
+
+/* ========================= */
+/* Inner Header Wrapper */
+/* ========================= */
+
+.header-inner {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center; /* Vertically center items */
+  justify-content: space-between; /* Space between left, center, right */
+  padding: 0 20px; /* Horizontal padding */
+  box-sizing: border-box;
+}
+
+/* ========================= */
+/* Left and Right Sections */
+/* ========================= */
+
+.header-actions--left,
+.header-actions--right {
+  flex: 1; /* Equal flex grow */
+  display: flex;
+  align-items: center;
+  gap: 20px; /* Space between child elements */
+}
+
+.header-actions--left {
+  justify-content: flex-start; /* Align left content to the start */
+}
+
+.header-actions--right {
+  justify-content: flex-end; /* Align right content to the end */
+}
+
+/* ========================= */
+/* Social Icons */
+/* ========================= */
+
+.header-icon {
+  width: 28px;
+  height: 28px;
+  fill: #1B3E68; /* Icon color */
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.header-icon:hover,
+.header-icon:focus {
+  transform: scale(1.1);
+}
+
+/* ========================= */
+/* Center Element: Logo */
+/* ========================= */
+
+.header-title {
+  flex: 0; /* No flex grow */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.header-title-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-desktop {
+  width: auto; /* Maintain original width */
+  height: 100px; /* Adjust as needed */
+  display: block;
+  object-fit: contain;
+}
+
+.logo-mobile {
+  display: none; /* Hidden by default; shown via media query */
+  width: auto; /* Maintain original width */
+  height: 80px; /* Adjust as needed */
+}
+
+/* ========================= */
+/* Right Element: Language & Join */
+/* ========================= */
+
+.language-picker {
+  position: relative; /* For dropdown */
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #3266b2; /* Link color */
+}
+
+.language-icon {
+  font-size: 19px;
+  color: #1B3E68;
+}
+
+.language-dropdown {
+  display: none; /* Hidden by default */
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  list-style: none;
+  padding: 0;
+  min-width: 100px;
+  z-index: 999;
+}
+
+.language-dropdown li {
+  border-bottom: 1px solid #eee;
+}
+
+.language-dropdown li:last-child {
+  border-bottom: none;
+}
+
+.language-dropdown li button {
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  color: #3266b2;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.language-dropdown li button:hover,
+.language-dropdown li button:focus {
+  background-color: #f0f0f0;
+  outline: none;
+}
+
+/* Show dropdown on hover or focus */
+.language-picker:hover .language-dropdown,
+.language-picker:focus-within .language-dropdown {
+  display: block;
+}
+
+/* ========================= */
+/* Join Button */
+/* ========================= */
+
+.join-btn {
+  background-color: var(--black, #1d539f);
+  color: #fff;
+  width: 156px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.join-btn:hover,
+.join-btn:focus {
+  background-color: #14538d;
+  outline: none;
+}
+
+/* ========================= */
+/* Hamburger Button */
+/* ========================= */
+
+.hamburger-button {
+  display: none; /* Hidden by default; shown on mobile */
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  width: 30px;
+  height: 25px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 25px; /* Adjust as needed */
+  right: 20px;
+  z-index: 1001;
+}
+
+.hamburger-button:focus {
+  outline: none;
+}
+
+.hamburger-bar {
+  width: 100%;
+  height: 4px;
+  background-color: #1B3E68;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+/* Transform into "X" when open */
+.hamburger-button.open .hamburger-bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-button.open .hamburger-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger-button.open .hamburger-bar:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* ========================= */
+/* Navigation Menu */
+/* ========================= */
+
+.header-nav {
+  display: none; /* Hidden by default */
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--lightAccent, #88b6fc);
+  width: 100%;
+  height: 100vh;
+  padding: 80px 0 20px 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, opacity 0.3s ease;
+  z-index: 999;
+}
+
+.header-nav.open {
+  display: flex;
+  max-height: 100vh;
+  opacity: 1;
+}
+
+.header-nav a {
+  width: 100%;
+  padding: 15px 0;
+  text-align: center;
+  font-size: 24px;
+  color: #fff;
+  text-decoration: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.header-nav a:hover,
+.header-nav a:focus {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #ffd700;
+  outline: none;
+}
+
+/* ========================= */
+/* Responsive Design */
+/* ========================= */
+
+/* Tablets */
+@media (max-width: 992px) {
+  .logo-desktop {
+    max-width: 300px; /* Restore or adjust as needed */
+  }
+
+  .header-inner {
+    padding: 0 15px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 576px) {
+  .logo-desktop {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: block;
+    width: auto; /* Maintain original width */
+    height: 80px; /* Adjust as needed */
+  }
+
+  .header-actions--left,
+  .header-actions--right {
+    justify-content: center;
+    margin-top: 10px;
+    width: 100%;
+    gap: 15px; /* Adjust spacing for mobile */
+  }
+
+  .header-inner {
+    flex-direction: column;
+    padding: 0 10px;
+    align-items: center;
+  }
+
+  .hamburger-button {
+    display: flex; /* Show hamburger on mobile */
+    position: fixed; /* Fixed to overlay correctly */
+    top: 25px;
+    right: 20px;
+    z-index: 1001;
+    transform: translateY(0); /* Reset transformation */
+  }
+
+  .header-nav {
+    display: none; /* Hidden by default */
+    flex-direction: column;
+    align-items: center;
+    background-color: var(--lightAccent, #88b6fc);
+    width: 100%;
+    height: 100vh;
+    padding: 80px 0 20px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    z-index: 999;
+  }
+
+  .header-nav.open {
+    display: flex;
+    max-height: 100vh;
+    opacity: 1;
+  }
+
+  .header-nav a {
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    font-size: 24px;
+    color: #fff;
+    text-decoration: none;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .header-nav a:hover,
+  .header-nav a:focus {
+    background-color: rgba(0, 0, 0, 0.1);
+    color: #ffd700;
+    outline: none;
+  }
+
+  /* Backdrop Overlay */
+  .header.nav-open::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+  }
+}

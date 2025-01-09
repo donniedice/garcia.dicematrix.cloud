@@ -1,0 +1,66 @@
+/* index.css */
+
+/* Reset and Global Styles */
+html {
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  overflow-x: hidden; /* Prevent horizontal overflow */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Root App Container */
+#root, .App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f9fafc; /* Light background for content */
+}
+
+/* Main Content Section */
+main {
+  flex: 1;
+  background-color: #ffffff; /* White background for main content */
+  overflow: hidden; /* Prevent content overflow */
+  padding: 0; /* Reset padding */
+  margin: 0; /* Reset margin */
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: #1B3E68;
+  color: #fff;
+  padding: 10px 0;
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Responsive Design for Smaller Screens */
+@media (max-width: 768px) {
+  main {
+    padding: 10px;
+  }
+
+  footer {
+    font-size: 0.8rem;
+  }
+}
+
+/* Code Block Styling */
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}

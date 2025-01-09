@@ -1,0 +1,176 @@
+/* Example background, top spacer, etc. */
+.home-page {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0;
+  background-color: #88b6fc;
+}
+
+.gallery-spacer {
+  height: 30px;
+  width: 100%;
+  background-color: #354E2D;
+}
+
+/* ========================= */
+/* Slideshow Container */
+/* ========================= */
+.home-slideshow {
+  position: relative;
+  width: 100%;
+  /* If you don't want a fixed height, remove or set min-height
+     so images define the container height themselves:
+     min-height: 400px; 
+  */
+  overflow: hidden;
+  background: #000; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.slide-container {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.slide-wrapper {
+  display: flex;
+  /* We set `transition` inline in Home.js, but you can keep fallback here:
+     transition: transform 1.2s ease-in-out;
+  */
+}
+
+.slide {
+  min-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* No top/bottom cut => object-fit: contain, height auto */
+.slide-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ========================= */
+/* Arrows */
+/* ========================= */
+.arrow-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(0,0,0,0.3);
+  color: #fff;
+  border: none;
+  font-size: 32px; 
+  cursor: pointer;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  transition: background 0.3s ease;
+}
+.arrow-left {
+  left: 20px;
+}
+.arrow-right {
+  right: 20px;
+}
+.arrow-btn:hover {
+  background-color: rgba(0,0,0,0.6);
+}
+
+/* ========================= */
+/* Dot Indicators */
+/* ========================= */
+.slide-dots {
+  position: absolute;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 2;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #bbb;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.dot:hover {
+  background-color: #888;
+}
+.dot.active {
+  background-color: #fff;
+}
+
+/* ========================= */
+/* Informational Text */
+/* ========================= */
+.home-info {
+  text-align: center;
+  margin: 40px auto;
+  max-width: 800px;
+  padding: 0 20px;
+}
+
+.home-extra-text {
+  margin-top: 30px;
+  line-height: 1.6;
+  font-size: 16px;
+}
+
+/* Example button style if needed */
+.home-learn-more-btn {
+  background-color: #1B3E68;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 16px;
+  text-decoration: none;
+  border-radius: 0;
+  transition: background 0.3s ease;
+}
+.home-learn-more-btn:hover {
+  background-color: #14538d;
+}
+
+/* ========================= */
+/* Responsive Adjustments */
+/* ========================= */
+@media (max-width: 768px) {
+  .arrow-btn {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+  }
+
+}
+
+@media (max-width: 576px) {
+  .arrow-btn {
+    font-size: 19px;
+    width: 35px;
+    height: 35px;
+    line-height: 35px;
+  }
+  .dot {
+    width: 8px;
+    height: 8px;
+  }
+  /* adjust text sizes as you like */
+}
