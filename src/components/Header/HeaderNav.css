@@ -1,0 +1,71 @@
+/* ========================= */
+/* Desktop Navigation */
+/* ========================= */
+
+.desktop-nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-list li a {
+  text-decoration: none;
+  color: var(--textColor, #1B3E68);
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.nav-list li a:hover,
+.nav-list li a:focus {
+  color: var(--hoverBlue, #14538d);
+}
+
+/* ========================= */
+/* Mobile Navigation */
+/* ========================= */
+
+.hamburger-button {
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.hamburger-bar {
+  width: 100%;
+  height: 3px;
+  background-color: var(--textColor, #1B3E68);
+}
+
+.header-nav {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* ========================= */
+/* Responsive Design */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .desktop-nav {
+    display: none;
+  }
+
+  .hamburger-button {
+    display: flex;
+  }
+
+  .header-nav {
+    display: flex;
+  }
+}

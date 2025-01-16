@@ -1,0 +1,55 @@
+/* ========================= */
+/* Logo and Title */
+/* ========================= */
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  text-align: center;
+}
+
+.header-title-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-desktop {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  transition: max-width 0.3s ease;
+}
+
+.logo-mobile {
+  display: none;
+  width: auto;
+  height: 80px;
+  max-width: 300px;
+  object-fit: contain;
+}
+
+/* ========================= */
+/* Responsive Design */
+/* ========================= */
+
+@media (max-width: 768px) {
+  .logo-desktop {
+    max-width: 400px;
+  }
+}
+
+@media (max-width: 576px) {
+  .logo-desktop {
+    display: none;
+  }
+
+  .logo-mobile {
+    display: block;
+  }
+}

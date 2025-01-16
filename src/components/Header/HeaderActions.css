@@ -1,0 +1,106 @@
+/* ========================= */
+/* Social Media Icons */
+/* ========================= */
+
+.header-actions--left {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  grid-column: 1;
+  z-index: 1;
+}
+
+.header-icon {
+  width: 28px;
+  height: 28px;
+  fill: var(--textColor, #1B3E68);
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.header-icon:hover,
+.header-icon:focus {
+  transform: scale(1.1);
+}
+
+/* ========================= */
+/* Language Dropdown + Join Button */
+/* ========================= */
+
+.header-actions--right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+  grid-column: 3;
+  z-index: 1;
+}
+
+.language-picker {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #3266b2;
+}
+
+.language-icon {
+  font-size: 19px;
+}
+
+.language-dropdown {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 4px;
+  background-color: var(--white, #fff);
+  border: 1px solid var(--borderColor, #ccc);
+  list-style: none;
+  padding: 0;
+  z-index: 999;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.language-dropdown li button {
+  width: 100%;
+  padding: 8px 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #3266b2;
+  font-size: 15px;
+  transition: background-color 0.3s ease;
+}
+
+.language-dropdown li button:hover,
+.language-dropdown li button:focus {
+  background-color: #f0f0f0;
+}
+
+.language-picker:hover .language-dropdown,
+.language-picker:focus-within .language-dropdown {
+  display: block;
+}
+
+.join-btn {
+  background-color: var(--buttonColor, #1d539f);
+  color: var(--white, #fff);
+  width: 156px;
+  height: 53px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.join-btn:hover,
+.join-btn:focus {
+  background-color: var(--buttonHoverColor, #14538d);
+}

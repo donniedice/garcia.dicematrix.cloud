@@ -1,5 +1,13 @@
 import React, { useState, useEffect, useRef } from 'react';
+
+// Import CSS files
 import './Header.css';
+import './HeaderActions.css';
+import './HeaderLogo.css';
+import './HeaderMobile.css';
+import './HeaderNav.css';
+
+// Import dependencies
 import FocusTrap from 'focus-trap-react';
 import { useTranslation } from 'react-i18next';
 
@@ -45,7 +53,7 @@ function Header() {
   return (
     <header className={`header theme-col--primary ${isNavOpen ? 'nav-open' : ''}`}>
       <div className="header-inner">
-        {/* Social Media Section */}
+        {/* Social Media Section - Visible only on non-mobile */}
         <div className="header-actions header-actions--left">
           <a
             href="http://instagram.com/gfmdirectprimarycare/"
@@ -104,7 +112,7 @@ function Header() {
           </nav>
         </div>
 
-        {/* Language Picker and Join Button */}
+        {/* Language Picker and Join Button - Visible only on non-mobile */}
         <div className="header-actions header-actions--right">
           <div className="language-picker" tabIndex="0">
             <span className="language-icon" aria-hidden="true">🌐</span>
@@ -144,22 +152,36 @@ function Header() {
       {/* Mobile Navigation */}
       {isNavOpen && (
         <FocusTrap>
-          <nav
-            id="header-navigation"
-            ref={navRef}
-            className={`header-nav ${isNavOpen ? 'open' : ''}`}
-            aria-hidden={!isNavOpen}
-          >
-            <a href="/meet-dr-tess-garcia" onClick={handleNavLinkClick}>
+          <div className={`mobile-menu ${isNavOpen ? 'open' : ''}`} ref={navRef}>
+            {/* Navigation Links */}
+            <a href="/meet-dr-tess-garcia" className="mobile-nav-link" onClick={handleNavLinkClick}>
               {t('nav_meetTheDoctor')}
             </a>
-            <a href="/services" onClick={handleNavLinkClick}>
+            <a href="/services" className="mobile-nav-link" onClick={handleNavLinkClick}>
               {t('nav_services')}
             </a>
-            <a href="/contact" onClick={handleNavLinkClick}>
+            <a href="/contact" className="mobile-nav-link" onClick={handleNavLinkClick}>
               {t('nav_contact')}
             </a>
-          </nav>
+
+            {/* Social Media Links */}
+            <div className="mobile-social-media">
+              <a href="http://instagram.com/" className="header-icon" aria-label="Instagram">
+                <InstagramIcon />
+              </a>
+              <a href="http://facebook.com/" className="header-icon" aria-label="Facebook">
+                <FacebookIcon />
+              </a>
+              <a href="http://youtube.com/" className="header-icon" aria-label="YouTube">
+                <YoutubeIcon />
+              </a>
+            </div>
+
+            {/* Join the Family Button */}
+            <a href="/join-the-family" className="btn join-btn">
+              {t('header_join')}
+            </a>
+          </div>
         </FocusTrap>
       )}
     </header>
